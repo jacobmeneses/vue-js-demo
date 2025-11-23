@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import WatchExample from './components/WatchExample.vue';
 import EmitterComponent from './components/EmitterComponent.vue';
 import CompSlot from './components/CompSlot.vue';
+import HelloWorld from './components/tutorial/HelloWorld.vue';
 const counter = ref({ count: 10 })
 const message = ref('Hello World!')
 
@@ -57,11 +58,8 @@ function removeTodo(todo) {
 </script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+
+  <HelloWorld />
 
   <div>
     <h1>{{ message }}</h1>
@@ -120,7 +118,8 @@ function removeTodo(todo) {
   <CompSlot/>
 </template>
 
-<style scoped>
+<style>
+@import "tailwindcss";
 
 .title-red {
   color: red;
