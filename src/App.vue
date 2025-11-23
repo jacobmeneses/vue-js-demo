@@ -1,6 +1,8 @@
 <script setup>
 import { ref, computed } from 'vue'
 import WatchExample from './components/WatchExample.vue';
+import EmitterComponent from './components/EmitterComponent.vue';
+import CompSlot from './components/CompSlot.vue';
 const counter = ref({ count: 10 })
 const message = ref('Hello World!')
 
@@ -9,6 +11,7 @@ const titleClass = ref('title-red');
 const nameOfColor = ref('red')
 const inputText = ref('')
 const greeting = ref('greeting from parent')
+const childMsg = ref('no message yet from child')
 
 function increment() {
   counter.value.count++;
@@ -103,6 +106,18 @@ function removeTodo(todo) {
   </div>
 
   <WatchExample :msg="greeting" />
+
+  <div style="border: 1px solid black; margin-top:20px; padding:10px;">
+    <h3>{{ childMsg }}</h3>
+    <EmitterComponent @response="(msg) => childMsg = msg"/>
+  </div>
+
+  <CompSlot>
+    <h3>This is slot content from parent</h3>
+    <p>Displayed because parent provided slot content</p>
+  </CompSlot>
+
+  <CompSlot/>
 </template>
 
 <style scoped>
